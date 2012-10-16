@@ -12,7 +12,14 @@ public class PersonManagerTests {
 	public void get_tests() {
 		
 		PersonManager mgr= new PersonManager();
-		boolean saved= mgr.save(new Person("Adam"));
+		boolean saved= mgr.save(new Condition<Person>() {
+			
+			@Override
+			public boolean getCondition(Person p) {
+				// TODO Auto-generated method stub
+				return p.getCars().size() > 0 && p.getName() == "Adam";
+			}
+		});
 		Person person =mgr.get(new Condition<Person>(){
 			@Override
 			public boolean getCondition(Person p)
@@ -23,6 +30,7 @@ public class PersonManagerTests {
 		
 		assertTrue(DatabaseContext.getPersons().size()==1);
 		assertTrue(person.getName().equals("Adam"));
+		assertTrue(saved);
 		
 	}
 

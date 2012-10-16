@@ -32,15 +32,16 @@ public class PersonManager implements ManagerInterface<Person>{
 	}
 
 	@Override
-	public boolean save(Person p) {
+	public boolean save(Condition<Person> p) {
+		// Jak zmienic Condition<Person> do Person
+		Person someOne = null;
 		
-		
-		return persons.add(p);
+		return persons.add(someOne);
 	}
 
 	@Override
-	public boolean delete(Person p) {
-		
+	public boolean delete(Condition<Person> p) {
+
 		return persons.remove(p);
 	}
 
